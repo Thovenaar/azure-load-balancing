@@ -34,6 +34,9 @@ module appServiceOne '../shared/app-service.bicep' = {
     webAppName: format(appServiceName, 1)
     // virtualNetworkSubnetId: virtualNetwork.outputs.vnetId
   }
+  dependsOn: [
+    appServicePlan
+  ]
 }
 
 module appServiceTwo '../shared/app-service.bicep' = {
@@ -46,4 +49,7 @@ module appServiceTwo '../shared/app-service.bicep' = {
     webAppName: format(appServiceName, 2)
     // virtualNetworkSubnetId: virtualNetwork.outputs.vnetId
   }
+  dependsOn: [
+    appServicePlan
+  ]
 }

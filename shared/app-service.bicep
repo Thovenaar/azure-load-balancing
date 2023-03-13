@@ -19,7 +19,7 @@ param startupCommand string = ''
 @description('HttpsOnly: configures a web site to accept only https requests. Issues redirect for http requests')
 param httpsOnly bool = true
 
-resource web_app_resource 'Microsoft.Web/sites@2021-03-01' = {
+resource appService 'Microsoft.Web/sites@2021-03-01' = {
   name: webAppName
   location: location
   kind: 'app,linux'
@@ -42,5 +42,6 @@ resource web_app_resource 'Microsoft.Web/sites@2021-03-01' = {
   }
 }
 
-output principalId string = web_app_resource.identity.principalId
-output url string = web_app_resource.properties.defaultHostName
+output principalId string = appService.identity.principalId
+output id string = appService.id
+output url string = appService.properties.defaultHostName
